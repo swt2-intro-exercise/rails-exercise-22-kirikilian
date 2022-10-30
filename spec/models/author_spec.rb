@@ -11,4 +11,9 @@ describe "new author", type: :model do
     expect(author.name).to eq (first_name + " " + last_name)
     expect(author.homepage).to eq (homepage)
   end
+
+  it "should not be valid without a last name" do
+    author = Author.new(first_name: "Alan", last_name: "", homepage: "http://wikipedia.org/Alan_Turing")
+    expect(author).to_not be_valid
+  end
 end
